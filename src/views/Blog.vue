@@ -1,15 +1,14 @@
 <template>
-  <div class="Home">
-    <router-view></router-view>
-    <h1>Homepage</h1>
+  <div class="blog">
+    <p>Blog</p>
   </div>
 </template>
 
 <script>
 export default {
+  name: "blog"
 }
 </script>
 
 <style>
-.home {}
 </style>
