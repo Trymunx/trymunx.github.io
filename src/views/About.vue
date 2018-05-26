@@ -31,9 +31,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("/forest.jpg");
-  background-repeat: no-repeat;
-  background-position: center top;
+  background: url("/forest.jpg") no-repeat center fixed;
+  background-size: cover;
   height: 100vh;
 }
 
