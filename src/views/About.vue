@@ -1,48 +1,60 @@
 <template>
   <div class="about">
-    <img src="@/assets/forest.jpg" id="forest-background">
     <div class="contents">
-      <About-Card/>
+      <about-card>
+        <img src="@/assets/Alex-Line.png" class="profile-image">    
+        <h2>Alexander Houseago</h2>
+        <p>Hobbyist web developer and Linux enthusiast.</p>
+        <div class="social-links">
+          <a href="https://twitter.com/trymunx" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://github.com/trymunx" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="mailto:trymunx@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </about-card>
     </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import AboutCard from "@/components/AboutCard.vue"
+import AboutCard from "@/components/AboutCard.vue";
 
 export default {
   name: "about",
   components: {
     AboutCard
   }
-}
+};
 </script>
 
 <style>
 .about {
-  // background-image: url("/forest.jpg");
-  // height: 100vh;
-  height: 100%;
-}
-.contents {
   display: flex;
-  justify-content: CENTER;
-  margin-top: 120px;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/forest.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  height: 100vh;
 }
 
-@media (min-width: 900px) {
-  #forest-background {
-    width: 100%;
-  }
+.profile-image {
+  width: 160px;
+  transition: width 0.5s ease-in;
 }
 
-#forest-background {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  overflow-x: hidden;
-  z-index: -1;
+.profile-image:hover {
+  width: 1000px;
+  transition: all 200s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+}
+
+.social-links > a {
+  font-size: 2em;
+  padding: 2px 10px;
+  color: #2a3a2d;
+  transition: color 0.35s ease;
+}
+
+.social-links > a:hover {
+  color: #4c7553;
 }
 </style>
