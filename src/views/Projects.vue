@@ -1,13 +1,17 @@
 <template>
-  <div class="page-background">
-    <div class="header-box"></div>
+  <div class="page-background" @click="setActive('')">
     <div class="projects">
-      <project-card v-for="(project, i) in projects" :key="i">
-        <img :src="project.img" slot="card-image" class="card-image">
+      <project-card 
+        v-for="(project, i) in projects" 
+        :key="i" 
+        :focused="active === i"
+        @click.native.stop>
+        <img :src="project.img" slot="card-image" class="card-image" @click.stop="setActive(project.title)">
         <h1 slot="project-title">{{ project.title }}</h1>
         <a slot="link-button" :href="project.link.url" target="_blank">{{ project.link.title }}</a>
         <a slot="source-button" :href="project.source" target="_blank"><i class="fab fa-github"></i></a>
-        <p class="card-content">{{ project.description }}</p>
+        <p slot="description">{{ project.description }}</p>
+        <p slot="writeup">{{ project.writeup }}</p>
       </project-card>
     </div>
   </div>
@@ -20,11 +24,27 @@ import ProjectsJSON from "@/projects/index.json";
 export default {
   data() {
     return {
-      projects: ProjectsJSON
+      projects: ProjectsJSON,
+      active: -1
     };
   },
   components: {
     ProjectCard
+  },
+  methods: {
+    setActive(title, firstVisit = false) {
+      if (!firstVisit) this.$router.push({ path: `/projects/${title || ""}` });
+      this.active = this.$route.params.post
+        ? this.projects.findIndex(e => {
+            return (
+              e.title.toLowerCase() === this.$route.params.post.toLowerCase()
+            );
+          })
+        : -1;
+    }
+  },
+  created() {
+    this.setActive(this.$route.params.title, true);
   }
 };
 </script>
@@ -35,22 +55,15 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   padding: 10px;
-}
-
-.header-box {
-  height: 60px;
+  margin-top: 60px;
 }
 
 .page-background {
   position: absolute;
-  /* background: url("/forest2.jpg") repeat-y center;
-  background-blend-mode: lighten;
-  background-size: cover; */
   background: linear-gradient(165deg, #fefefe 60%, #d3d3d3);
   z-index: -1;
   width: 100vw;
   max-width: 100%;
   min-height: 100vh;
-  /* filter: opacity(0.8) saturate(1.1) contrast(1.2); */
 }
 </style>

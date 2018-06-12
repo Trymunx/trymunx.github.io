@@ -39,7 +39,7 @@ nav a:hover {
   border-bottom: 2px solid #3c7a298e;
 }
 
-nav a.router-link-exact-active {
+nav a.router-link-active {
   color: #3c7a29;
   border: 2px;
   border-bottom: 2px solid #3c7a29;

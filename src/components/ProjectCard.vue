@@ -1,5 +1,5 @@
 <template>
-  <div class="project-card">
+  <div :class="`project-card ${focused ? 'fullscreen' : ''}`">
     <slot name="card-image"/>
     <div class="card-title">
       <div class="project-title">
@@ -12,12 +12,21 @@
         <slot name="source-button" class="source-button"/>
       </span>
     </div>
-    <slot class="card-content"/>
+    <span :class="focused ? 'focused-summary' : 'card-content'">
+      <slot name="description"/>
+    </span>
+    <span v-show="focused" class="writeup">
+      <slot name="writeup"/>
+    </span>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    focused: { type: Boolean, default: false }
+  }
+};
 </script>
 
 <style>
@@ -32,6 +41,13 @@ export default {};
   border-radius: 4px;
   background: #fff;
   box-shadow: 0 4px 8px 0 #0000000a, 0 6px 20px 0 #00000032;
+  transition: width 250ms, height 250ms;
+}
+
+.fullscreen {
+  position: absolute;
+  width: 80vw;
+  max-width: 80vw;
 }
 
 .card-image {
@@ -87,6 +103,21 @@ export default {};
   padding: 2px 14px 8px;
 }
 
+.writeup {
+  text-align: left;
+  padding: 10px 35px 15px;
+  line-height: 1.8em;
+  white-space: pre-wrap;
+}
+
+.focused-summary {
+  text-align: left;
+  padding: 8px 80px 10px;
+  font-style: italic;
+  line-height: 1.4em;
+  color: #494949;
+}
+
 .page-container {
   background: #fafafa;
   min-height: 100vh;
@@ -96,6 +127,11 @@ export default {};
   .project-card {
     width: 95%;
     max-width: 600px;
+  }
+
+  .fullscreen {
+    width: 100%;
+    max-width: 100%;
   }
 }
 </style>

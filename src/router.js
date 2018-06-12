@@ -23,7 +23,7 @@ export default new Router({
       component: Blog
     },
     {
-      path: "/projects",
+      path: "/projects/:post?",
       name: "projects",
       component: Projects
     }
