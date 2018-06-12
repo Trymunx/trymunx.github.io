@@ -38,12 +38,7 @@ export default {
 .projects {
   display: flex;
   flex-wrap: wrap;
-}
-
-.project-card {
-  min-width: 400px;
-  padding-bottom: 5px;
-  margin: 10px;
+  padding: 10px;
 }
 
 .header-box {
@@ -74,13 +69,13 @@ export default {
   border-radius: 8px;
   font-size: 1.2em;
   text-decoration: none;
-  color: #EBF4EB;
+  color: #ebf4eb;
   background: #4c7553;
   transition: all 0.35s ease;
 }
 .play-link:hover {
   background: #4f935b;
-  box-shadow: 0 4px 8px 0 #0000001A, 0 6px 20px 0 #00000052;
+  box-shadow: 0 4px 8px 0 #0000001a, 0 6px 20px 0 #00000052;
 }
 .card-content {
   text-align: left;
@@ -88,7 +83,7 @@ export default {
 }
 
 .page-container {
-  background: #FAFAFA;
+  background: #fafafa;
   min-height: 100vh;
 }
 .page-background {
