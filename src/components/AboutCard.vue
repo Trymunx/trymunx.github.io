@@ -19,7 +19,7 @@ export default {
   padding: 50px 45px 30px;
   background: white;
   border-radius: 3px;
-  box-shadow: 0px 3px 10px -2px grey;
+  box-shadow: 0 4px 8px 0 #0000000A, 0 6px 20px 0 #00000032;
 }
 .about-card > * {
   padding: 15px 8px;

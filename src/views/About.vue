@@ -31,7 +31,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("/forest.jpg") no-repeat center fixed;
+  background: url("/forest1.jpg") no-repeat center fixed;
   background-size: cover;
   height: 100vh;
 }

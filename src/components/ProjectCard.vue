@@ -13,7 +13,10 @@ export default {}
 <style>
 .project-card {
   display: flex;
+  min-width: 50%;
+  flex-grow: 1;
   flex-direction: column;
+  border-radius: 4px;
   box-shadow: 0 4px 8px 0 #0000000A, 0 6px 20px 0 #00000032;
 }
 .card-image {
@@ -24,10 +27,6 @@ export default {}
 .project-title {
   font-size: 1.2em;
   text-align: center;
-  padding: 10px;
 }
-.card-content {
-  text-align: left;
-  padding: 2px;
-}
+.card-content {}
 </style>

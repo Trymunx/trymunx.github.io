@@ -47,6 +47,7 @@ nav a.router-link-exact-active {
 
 .router {
   width: 100vw;
+  max-width: 100%;
   position: absolute;
   display: flex;
   flex-grow: 1;
