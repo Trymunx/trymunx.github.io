@@ -35,19 +35,18 @@ nav a {
 }
 
 nav a:hover {
-  color: #3c7a29;
+  color: #3c7a298e;
   border-bottom: 2px solid #3c7a298e;
 }
 
 nav a.router-link-exact-active {
-  color: #263325;
+  color: #3c7a29;
   border: 2px;
   border-bottom: 2px solid #3c7a29;
 }
 
 .router {
   width: 100vw;
-  max-width: 100%;
   position: absolute;
   display: flex;
   flex-grow: 1;
