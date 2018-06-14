@@ -87,15 +87,8 @@ export default {
 }
 
 .profile-image {
-  /* width: 160px; */
   width: 50%;
   max-width: 400px;
-  transition: width 0.5s ease-in;
-}
-
-.profile-image:hover {
-  width: 1000px;
-  transition: all 200s cubic-bezier(0.95, 0.05, 0.795, 0.035);
 }
 
 .social-links {
@@ -111,5 +104,26 @@ export default {
 
 .social-links > a:hover {
   color: #4c7553;
+}
+
+@media screen and (orientation: landscape) {
+  .contents {
+    position: absolute;
+    bottom: 0;
+    width: 60vw;
+    height: 100vh;
+    max-height: 100%;
+  }
+  .profile-image {
+    height: 50%;
+    max-height: 400px;
+    width: auto;
+  }
+  .about-me {
+    right: 0;
+    width: 40%;
+    height: 100vh;
+    box-shadow: -4px 0px 18px 0 #0000004d;
+  }
 }
 </style>
