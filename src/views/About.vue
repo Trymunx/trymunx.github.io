@@ -116,7 +116,7 @@ export default {
 @media screen and (orientation: landscape) {
   .contents {
     width: 60vw;
-    height: 100vh;
+    height: calc(100vh - 62px);
     max-height: 100%;
   }
   .profile-image {
@@ -128,7 +128,7 @@ export default {
     right: 0;
     top: 60px;
     width: 40%;
-    height: 100vh;
+    height: calc(100vh - 62px);
     box-shadow: none;
   }
 }
