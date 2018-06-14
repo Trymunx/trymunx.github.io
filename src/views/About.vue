@@ -1,20 +1,11 @@
 <template>
   <div>
-  <div class="about">
-    <div class="contents">
-      <img src="@/assets/Alex-Line.png" class="profile-image">
-    </div>
-    <!-- <div class="about-me">
-      <h2>Alexander Houseago</h2>
-      <p>Hobbyist web developer and Linux enthusiast.</p>
-      <div class="social-links">
-        <a href="https://twitter.com/trymunx" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://github.com/trymunx" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="mailto:trymunx@gmail.com"><i class="fas fa-envelope"></i></a>
+    <div class="about">
+      <div class="link-background"></div>
+      <div class="contents">
+        <img src="@/assets/Alex-Line.png" class="profile-image">
       </div>
-    </div> -->
-      <!-- <about-card>
-        <img src="@/assets/Alex-Line.png" class="profile-image">    
+      <!-- <div class="about-me">
         <h2>Alexander Houseago</h2>
         <p>Hobbyist web developer and Linux enthusiast.</p>
         <div class="social-links">
@@ -22,9 +13,19 @@
           <a href="https://github.com/trymunx" target="_blank"><i class="fab fa-github"></i></a>
           <a href="mailto:trymunx@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
-      </about-card> -->
-    <!-- </div> -->
-  </div>
+      </div> -->
+        <!-- <about-card>
+          <img src="@/assets/Alex-Line.png" class="profile-image">    
+          <h2>Alexander Houseago</h2>
+          <p>Hobbyist web developer and Linux enthusiast.</p>
+          <div class="social-links">
+            <a href="https://twitter.com/trymunx" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/trymunx" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="mailto:trymunx@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </about-card> -->
+      <!-- </div> -->
+    </div>
     <div class="about-me">
       <h2>Alexander Houseago</h2>
       <p>Hobbyist web developer and Linux enthusiast.</p>
@@ -55,13 +56,11 @@ export default {
   align-items: center;
   background: url("/snow.jpg") no-repeat center fixed;
   background-size: cover;
-  height: 70vh;
+  height: 65vh;
 }
 .about {
   display: flex;
   flex-direction: column;
-  /* height: 92vh; */
-  /* height: 100vh; */
   height: 100%;
 }
 
@@ -92,7 +91,7 @@ export default {
 }
 
 .social-links {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .social-links > a {
@@ -106,10 +105,16 @@ export default {
   color: #4c7553;
 }
 
+.link-background {
+  width: 100%;
+  height: 62px;
+  background: #fff;
+  z-index: 1;
+  box-shadow: 0 4px 18px 0 #0000004d;
+}
+
 @media screen and (orientation: landscape) {
   .contents {
-    position: absolute;
-    bottom: 0;
     width: 60vw;
     height: 100vh;
     max-height: 100%;
@@ -121,9 +126,10 @@ export default {
   }
   .about-me {
     right: 0;
+    top: 60px;
     width: 40%;
     height: 100vh;
-    box-shadow: -4px 0px 18px 0 #0000004d;
+    box-shadow: none;
   }
 }
 </style>

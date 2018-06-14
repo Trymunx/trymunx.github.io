@@ -53,5 +53,6 @@ nav a.router-link-active {
   flex-grow: 1;
   justify-content: center;
   top: 0;
+  z-index: 99;
 }
 </style>
