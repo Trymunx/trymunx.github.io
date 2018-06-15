@@ -8,7 +8,28 @@
     },
     "source": "https://github.com/trymunx/Spindelspel",
     "description": "A top down swarm game created in p5js, a JavaScript port of Processing. This was completed from scratch over a weekend so has a lot of rough edges.",
-    "writeup": "This top down game was the result of spending a weekend learning the p5js library. I had a vague idea of what sort of mechanics I would like to have before I started, but a lot was worked out along the way.\nThe first problem I solved was getting a player 'blob' that I could move with the WASD or arrow keys. I tried adding zooming in and out at this stage but what I was really doing was scaling the size of the blob rather than moving the camera in and out. In the end I didn't have time to fix this, so I left it as a mechanic where the larger the player is, the easier it is for spiders to reach them but the quicker they can draw their bow.\nI used inkscape and GIMP to draw and colour the spiders, which look very beetle-like due to some fairly poor digital art skills. Getting these to rotate to follow the player was a bit of a challenge and required trying to remember my A level maths trigonometry lessons. The solution is not very performant which means the game really slows down if many spiders are present on screen at once. I would have liked to fix this but as spending time on performance increases was not really high priority I just hoped players wouldn't get a high enough score to see too many spiders.\nInstead of using pre-drawn assets for the arrows, I wanted to draw them using p5's canvas drawing tools. These were easy enough to use for things like the grass tufts randomly placed, but the arrows were more time-consuming so ended up just being sticks with white points. Similarly, I had intended on updating the player from just a white blob to be a top-down view of a person but ran out of time.\nA few things like this were programmatically decided; the number of spiders depends on the player's score, their speed on their size and the likelihood of the arrow piercing them and continuing on through depends both on the speed of the arrow and the size of the spider."
+    "post": [
+      {
+        "element": "p",
+        "content": "This top down game was the result of spending a weekend learning the p5js library. I had a vague idea of what sort of mechanics I would like to have before I started, but a lot was worked out along the way."
+      },
+      {
+        "element": "p",
+        "content": "The first problem I solved was getting a player 'blob' that I could move with the WASD or arrow keys. I tried adding zooming in and out at this stage but what I was really doing was scaling the size of the blob rather than moving the camera in and out. In the end I didn't have time to fix this, so I left it as a mechanic where the larger the player is, the easier it is for spiders to reach them but the quicker they can draw their bow."
+      },
+      {
+        "element": "p",
+        "content": "I used inkscape and GIMP to draw and colour the spiders, which look very beetle-like due to some fairly poor digital art skills. Getting these to rotate to follow the player was a bit of a challenge and required trying to remember my A level maths trigonometry lessons. The solution is not very performant which means the game really slows down if many spiders are present on screen at once. I would have liked to fix this but as spending time on performance increases was not really high priority I just hoped players wouldn't get a high enough score to see too many spiders."
+      },
+      {
+        "element": "p",
+        "content": "Instead of using pre-drawn assets for the arrows, I wanted to draw them using p5's canvas drawing tools. These were easy enough to use for things like the grass tufts randomly placed, but the arrows were more time-consuming so ended up just being sticks with white points. Similarly, I had intended on updating the player from just a white blob to be a top-down view of a person but ran out of time."
+      },
+      {
+        "element": "p",
+        "content": "A few things like this were programmatically decided; the number of spiders depends on the player's score, their speed on their size and the likelihood of the arrow piercing them and continuing on through depends both on the speed of the arrow and the size of the spider."
+      }
+    ]
   },
   {
     "title": "Dragon Slayer",
@@ -19,6 +40,15 @@
     },
     "source": "https://github.com/trymunx/Dragon-Slayer",
     "description": "An attempt at a text based RPG using electron. Over the course of creating this I found that what I was making was much more a roguelike than a text adventure, and didn't really suit the text-based style.",
-    "writeup": "Starting out as a development on a Codecademy task of writing a program that would print whether or not you killed a dragon based on a random number generator, I ended up taking this project a long way from its origins.\nThe first version was fairly similar, albeit slightly more complex through the addition of dragon and player hitpoints and attack damage. It had no player input but would output a battle log of all of the turns of the player and the dragon, with a summary of whether or not the player had defeated the dragon. I then began using objects as I learned more about JavaScript, and eventually wrote a version that would continue respawning dragons until the player was dead, giving the number of dragons killed as the final line in the long output of turns."
+    "post": [
+      {
+        "element": "p",
+        "content": "Starting out as a development on a Codecademy task of writing a program that would print whether or not you killed a dragon based on a random number generator, I ended up taking this project a long way from its origins."
+      },
+      {
+        "element": "p",
+        "content": "The first version was fairly similar, albeit slightly more complex through the addition of dragon and player hitpoints and attack damage. It had no player input but would output a battle log of all of the turns of the player and the dragon, with a summary of whether or not the player had defeated the dragon. I then began using objects as I learned more about JavaScript, and eventually wrote a version that would continue respawning dragons until the player was dead, giving the number of dragons killed as the final line in the long output of turns."
+      }
+    ]
   }
 ]

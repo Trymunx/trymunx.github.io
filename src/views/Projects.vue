@@ -12,7 +12,10 @@
         <a slot="link-button" :href="project.link.url" target="_blank">{{ project.link.title }}</a>
         <a slot="source-button" :href="project.source" target="_blank"><i class="fab fa-github"></i></a>
         <p slot="description" @click.stop="setActive(project.title)">{{ project.description }}</p>
-        <p slot="writeup">{{ project.writeup }}</p>
+        <div slot="writeup"
+          v-for="(element, i) in project.post"
+          :key="i"
+          v-html="`<${element.element}>${element.content}</${element.element}>`"></div>
       </project-card>
     </div>
   </div>
