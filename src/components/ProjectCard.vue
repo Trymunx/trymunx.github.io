@@ -15,6 +15,7 @@
     <span :class="focused ? 'focused-summary' : 'card-content'">
       <slot name="description"/>
     </span>
+    <hr v-show="focused">
     <span v-show="focused" class="writeup">
       <slot name="writeup"/>
     </span>
@@ -120,12 +121,20 @@ export default {
   padding: 10px 18px 18px;
 }
 
-.writeup > p {
+.project-card > hr {
+  width: 80%;
+  margin: 2px auto 12px;
+}
+
+.writeup > div > p {
   text-align: left;
   line-height: 1.8em;
   white-space: pre-wrap;
-  padding: 0px 25px 25px;
+  padding: 6px 25px;
   max-width: 650px;
+}
+.writeup:last-child {
+  padding: 0px 0px 25px;
 }
 
 .focused-summary {
