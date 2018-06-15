@@ -6,7 +6,7 @@
         :key="i" 
         :focused="active === i"
         @click.native.stop>
-        <img :src="project.img" slot="card-image" class="card-image" @click.stop="setActive(project.title)">
+        <img :src="project.img" slot="card-image" class="card-image" @click.stop="active === -1 ? setActive(project.title) : setActive('')">
         <h1 slot="project-title">{{ project.title }}</h1>
         <a slot="link-button" :href="project.link.url" target="_blank">{{ project.link.title }}</a>
         <a slot="source-button" :href="project.source" target="_blank"><i class="fab fa-github"></i></a>
@@ -45,6 +45,11 @@ export default {
   },
   created() {
     this.setActive(this.$route.params.title, true);
+    window.addEventListener("keydown", e => {
+      if (this.active !== -1 && e.keyCode === 27) {
+        this.setActive('');
+      }
+    });
   }
 };
 </script>
