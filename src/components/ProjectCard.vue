@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style>
-.project-card {
+/* .project-card {
   display: flex;
   width: 45%;
   max-width: 600px;
@@ -42,12 +42,24 @@ export default {
   background: #fff;
   box-shadow: 0 4px 8px 0 #0000000a, 0 6px 20px 0 #00000032;
   transition: width 250ms, height 250ms;
+} */
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 8px 0 #0000000a, 0 6px 20px 0 #00000032;
+  margin: 20px 0px;
+  border-radius: 4px;
+  transition: width 250ms, height 250ms;
 }
 
 .fullscreen {
-  position: absolute;
-  width: 80vw;
-  max-width: 80vw;
+  width: 100vw;
+  max-width: 800px;
+  transition: width 250ms, height 250ms;
 }
 
 .card-image {
@@ -58,19 +70,24 @@ export default {
 
 .card-title {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  cursor: pointer;
+  justify-content: space-between;
+  padding: 0px 10px;
+  width: 95%;
+  max-width: 650px;
 }
 
 .project-title {
   font-size: 1.2em;
-  padding: 14px 20px;
+  padding: 10px 8px;
   margin-right: auto;
+  text-align: left;
 }
 
 .link-button > a {
   padding: 8px 28px;
-
+  margin: 2px 8px;
   cursor: pointer;
   border: none;
   border-radius: 8px;
@@ -98,40 +115,36 @@ export default {
   color: #4c7553;
 }
 
-.card-content {
+.card-content > p {
   text-align: left;
-  padding: 2px 14px 8px;
+  padding: 10px 18px 18px;
 }
 
-.writeup {
+.writeup > p {
   text-align: left;
-  padding: 10px 35px 15px;
   line-height: 1.8em;
   white-space: pre-wrap;
+  padding: 0px 25px 25px;
+  max-width: 650px;
 }
 
 .focused-summary {
+  display: flex;
+  justify-content: center;
+}
+.focused-summary > p {
   text-align: left;
-  padding: 8px 80px 10px;
+  padding: 20px;
   font-style: italic;
   line-height: 1.4em;
   color: #494949;
+  width: 80%;
+  max-width: 580px;
 }
 
-.page-container {
-  background: #fafafa;
-  min-height: 100vh;
-}
-
-@media only screen and (max-width: 900px) {
+@media only screen and (min-width: 1000px) {
   .project-card {
-    width: 95%;
-    max-width: 600px;
-  }
-
-  .fullscreen {
-    width: 100%;
-    max-width: 100%;
+    margin: 20px 30px;
   }
 }
 </style>

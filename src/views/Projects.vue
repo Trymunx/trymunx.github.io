@@ -6,11 +6,12 @@
         :key="i" 
         :focused="active === i"
         @click.native.stop>
-        <img :src="project.img" slot="card-image" class="card-image" @click.stop="active === -1 ? setActive(project.title) : setActive('')">
+        <img :src="project.img" slot="card-image" class="card-image" @click.stop="toggleActiveCard(project.title)">
+        <!-- <img :src="project.img" slot="card-image" class="card-image" @click.stop="active === -1 ? setActive(project.title) : setActive('')"> -->
         <h1 slot="project-title">{{ project.title }}</h1>
         <a slot="link-button" :href="project.link.url" target="_blank">{{ project.link.title }}</a>
         <a slot="source-button" :href="project.source" target="_blank"><i class="fab fa-github"></i></a>
-        <p slot="description">{{ project.description }}</p>
+        <p slot="description" @click.stop="setActive(project.title)">{{ project.description }}</p>
         <p slot="writeup">{{ project.writeup }}</p>
       </project-card>
     </div>
@@ -32,6 +33,18 @@ export default {
     ProjectCard
   },
   methods: {
+    toggleActiveCard(title) {
+      // find if the title clicked on is the current title. If so, setActive(""), otherwise setActive(index)
+      let isFullscreen = this.$route.params.post
+        ? title.toLowerCase() === this.$route.params.post.toLowerCase()
+        : false;
+      // let indexOfTitle = this.projects.findIndex(project => project.title.toLowerCase() === this.$route.params.post.toLowerCase());
+      if (isFullscreen) {
+        this.setActive("");
+      } else {
+        this.setActive(title);
+      }
+    },
     setActive(title, firstVisit = false) {
       if (!firstVisit) this.$router.push({ path: `/projects/${title || ""}` });
       this.active = this.$route.params.post
@@ -59,8 +72,10 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 10px;
+  align-items: flex-start;
   margin-top: 60px;
+  width: 100vw;
+  max-width: 100%;
 }
 
 .page-background {
@@ -68,7 +83,7 @@ export default {
   background: linear-gradient(165deg, #fefefe 60%, #d3d3d3);
   z-index: -1;
   width: 100vw;
-  max-width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 </style>
