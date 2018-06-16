@@ -51,6 +51,7 @@ export default {
   align-items: center;
   width: 90%;
   max-width: 600px;
+  background: #fff;
   box-shadow: 0 4px 8px 0 #0000000a, 0 6px 20px 0 #00000032;
   margin: 20px 0px;
   border-radius: 4px;
