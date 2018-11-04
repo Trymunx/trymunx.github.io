@@ -40,12 +40,14 @@ export default {
   align-items: center;
   background: url("/snow.jpg") no-repeat center fixed;
   background-size: cover;
-  height: 65vh;
+  height: 70%;
   z-index: -2;
 }
 
+.page-container,
 .about {
-  height: 100%;
+  height: 100vh;
+  max-height: 100%;
 }
 
 .about-me {
