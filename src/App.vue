@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <nav :class="routerClass">
+    <nav :class="`nav_${orientation}`">
       <router-link to="/about">About</router-link>
       <router-link to="/projects">Projects</router-link>
       <router-link to="/blog">Blog</router-link>
     </nav>
-    <router-view/>
+    <div :class="`app-content_${orientation}`">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -13,19 +15,19 @@
 export default {
   data() {
     return {
-      routerClass: ""
+      orientation: ""
     }
   },
   methods: {
-    calculateClass() {
+    calculateOrientation() {
       return window.matchMedia("(orientation: landscape)").matches && (window.innerHeight <= 530)
-        ? "vert-router"
-        : "horiz-router"
+        ? "landscape"
+        : "portrait"
     }
   },
   mounted() {
-    this.routerClass = this.calculateClass();
-    window.addEventListener("resize", () => this.routerClass = this.calculateClass());
+    this.orientation = this.calculateOrientation();
+    window.addEventListener("resize", () => this.orientation = this.calculateOrientation());
   }
 }
 </script>
@@ -46,6 +48,24 @@ ul {
   color: #2c3e50;
 }
 
+.app-content_landscape {
+  width: calc(100vw - 58px);
+  max-width: 100%;
+  height: 100vh;
+  max-height: 100%;
+  position: absolute;
+  left: 58px;
+}
+
+.app-content_portrait {
+  height: calc(100vh - 58px);
+  max-height: 100%;
+  width: 100vw;
+  max-width: 100%;
+  position: absolute;
+  top: 58px;
+}
+
 nav a {
   font-size: 1.6em;
   text-decoration: none;
@@ -64,23 +84,24 @@ nav a.router-link-active {
   color: #3c7a29;
 }
 
-.horiz-router {
+.nav_portrait {
   width: 100vw;
   max-width: 100%;
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-grow: 1;
   justify-content: center;
   top: 0;
   z-index: 99;
+  background-color: white;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05), 0px 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.vert-router {
+.nav_landscape {
   height: 100vh;
   max-height: 100%;
   width: 58px;
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -88,10 +109,11 @@ nav a.router-link-active {
   align-items: center;
   left: 0;
   z-index: 99;
+  background-color: white;
   box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.05), 4px 0px 20px rgba(0, 0, 0, 0.1);
 }
 
-.vert-router > a {
+.nav_landscape > a {
   transform: rotate(270deg);
 }
 </style>

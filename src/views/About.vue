@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-container">
     <div class="about">
       <div class="background-image">
         <img src="@/assets/Alex-Line.png" class="profile-picture">
@@ -43,10 +43,9 @@ export default {
   height: 65vh;
   z-index: -2;
 }
+
 .about {
-  position: relative;
   height: 100%;
-  top: 58px;
 }
 
 .about-me {
@@ -56,6 +55,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   height: 30%;
+  min-height: 160px;
   width: 100vw;
   max-width: 100%;
   background: #fff;
@@ -116,7 +116,8 @@ p {
 @media screen and (orientation: landscape) {
   .background-image {
     width: 60vw;
-    height: calc(100vh - 58px);
+    max-width: 100%;
+    height: 100vh;
     max-height: 100%;
   }
   .profile-picture {
@@ -126,21 +127,23 @@ p {
   }
   .about-me {
     right: 0;
-    top: 58px;
     width: 40%;
-    height: calc(100vh - 58px);
+    height: 100vh;
+    max-height: 100%;
     box-shadow: none;
   }
 }
 
-@media screen and (min-width: 750px) and (min-height: 750px) {
+@media screen and (min-width: 650px) and (min-height: 650px) {
   .about-card {
     display: flex;
   }
+  .page-container,
   .background-image {
     width: 100vw;
     max-width: 100%;
-    height: calc(100vh - 58px);
+    height: 100vh;
+    max-height: 100%;
   }
   .profile-picture,
   .about-me {
@@ -151,17 +154,17 @@ p {
 @media screen and (max-height: 530px) and (orientation: landscape) {
   .about {
     top: 0px;
-    left: 58px;
     height: 100vh;
     max-height: 100%;
-    width: calc(100vw - 58px);
+    width: 100vw;
     max-width: 100%;
   }
 
   .about-me {
-    top: 0px;
+    right: 0px;
     height: 100vh;
     max-height: 100%;
+    width: 40%;
   }
 
   .background-image {

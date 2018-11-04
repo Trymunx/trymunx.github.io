@@ -76,7 +76,7 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 60px;
+  margin: 20px 0px;
   width: 100vw;
   max-width: 100%;
 }
@@ -86,6 +86,7 @@ export default {
   background: linear-gradient(165deg, #fefefe 60%, #d3d3d3);
   z-index: -1;
   width: 100vw;
+  max-width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
 }
