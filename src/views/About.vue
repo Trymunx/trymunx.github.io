@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div class="link-background"></div>
     <div class="about">
       <div class="background-image">
         <img src="@/assets/Alex-Line.png" class="profile-picture">
@@ -47,6 +46,7 @@ export default {
 .about {
   position: relative;
   height: 100%;
+  top: 58px;
 }
 
 .about-me {
@@ -91,15 +91,6 @@ export default {
   color: #4c7553;
 }
 
-.link-background {
-  position: relative;
-  width: 100%;
-  height: 62px;
-  background: #fff;
-  z-index: 5;
-  box-shadow: 0 4px 18px 0 #0000004d;
-}
-
 .about-card {
   display: none;
   flex-direction: column;
@@ -125,7 +116,7 @@ p {
 @media screen and (orientation: landscape) {
   .background-image {
     width: 60vw;
-    height: calc(100vh - 62px);
+    height: calc(100vh - 58px);
     max-height: 100%;
   }
   .profile-picture {
@@ -135,9 +126,9 @@ p {
   }
   .about-me {
     right: 0;
-    top: 60px;
+    top: 58px;
     width: 40%;
-    height: calc(100vh - 62px);
+    height: calc(100vh - 58px);
     box-shadow: none;
   }
 }
@@ -149,7 +140,7 @@ p {
   .background-image {
     width: 100vw;
     max-width: 100%;
-    height: calc(100vh - 62px);
+    height: calc(100vh - 58px);
   }
   .profile-picture,
   .about-me {

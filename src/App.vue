@@ -18,7 +18,7 @@ ul {
   list-style: none;
 }
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Ubuntu", "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -36,13 +36,13 @@ nav a {
 
 nav a:hover {
   color: #3c7a298e;
-  border-bottom: 2px solid #3c7a298e;
+  /* border-bottom: 2px solid #3c7a298e; */
 }
 
 nav a.router-link-active {
   color: #3c7a29;
   border: 2px;
-  border-bottom: 2px solid #3c7a29;
+  /* border-bottom: 2px solid #3c7a29; */
 }
 
 .router {
@@ -54,5 +54,6 @@ nav a.router-link-active {
   justify-content: center;
   top: 0;
   z-index: 99;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05), 0px 4px 20px rgba(0, 0, 0, 0.1);
 }
 </style>
