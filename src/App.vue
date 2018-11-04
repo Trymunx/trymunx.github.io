@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="router">
+    <nav :class="routerClass">
       <router-link to="/about">About</router-link>
       <router-link to="/projects">Projects</router-link>
       <router-link to="/blog">Blog</router-link>
@@ -8,6 +8,27 @@
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      routerClass: ""
+    }
+  },
+  methods: {
+    calculateClass() {
+      return window.matchMedia("(orientation: landscape)").matches && (window.innerHeight <= 530)
+        ? "vert-router"
+        : "horiz-router"
+    }
+  },
+  mounted() {
+    this.routerClass = this.calculateClass();
+    window.addEventListener("resize", () => this.routerClass = this.calculateClass());
+  }
+}
+</script>
 
 <style>
 * {
@@ -29,7 +50,7 @@ nav a {
   font-size: 1.6em;
   text-decoration: none;
   color: #263325b6;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
   margin: 8px;
   padding: 6px;
 }
@@ -41,11 +62,9 @@ nav a:hover {
 
 nav a.router-link-active {
   color: #3c7a29;
-  border: 2px;
-  /* border-bottom: 2px solid #3c7a29; */
 }
 
-.router {
+.horiz-router {
   width: 100vw;
   max-width: 100%;
   position: absolute;
@@ -55,5 +74,24 @@ nav a.router-link-active {
   top: 0;
   z-index: 99;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05), 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.vert-router {
+  height: 100vh;
+  max-height: 100%;
+  width: 58px;
+  position: absolute;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  left: 0;
+  z-index: 99;
+  box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.05), 4px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.vert-router > a {
+  transform: rotate(270deg);
 }
 </style>

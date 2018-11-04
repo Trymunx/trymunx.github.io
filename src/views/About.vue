@@ -147,4 +147,25 @@ p {
     display: none;
   }
 }
+
+@media screen and (max-height: 530px) and (orientation: landscape) {
+  .about {
+    top: 0px;
+    left: 58px;
+    height: 100vh;
+    max-height: 100%;
+    width: calc(100vw - 58px);
+    max-width: 100%;
+  }
+
+  .about-me {
+    top: 0px;
+    height: 100vh;
+    max-height: 100%;
+  }
+
+  .background-image {
+    height: 100vh;
+  }
+}
 </style>
