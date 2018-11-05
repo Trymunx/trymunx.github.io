@@ -21,7 +21,7 @@ echo 'trymunx.com' > CNAME
 
 git init
 git add -A
-git commit -m "Deploy $ver"
+git commit -m "$ver"
 
 # if you are deploying to https://<USERNAME>.github.io
 git push -f git@github.com:trymunx/trymunx.github.io.git master
