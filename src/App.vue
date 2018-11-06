@@ -69,32 +69,34 @@ ul {
 nav a {
   font-size: 1.6em;
   text-decoration: none;
-  color: #263325b6;
+  color: #d6d6d6;
   transition: color 0.2s ease;
-  margin: 8px;
+  margin: 4px 8px;
   padding: 6px;
 }
 
-nav a:hover {
-  color: #3c7a298e;
-  /* border-bottom: 2px solid #3c7a298e; */
+nav a.router-link-active {
+  color: #eee;
+  font-size: 1.7em;
 }
 
-nav a.router-link-active {
-  color: #3c7a29;
+nav a:hover {
+  color: #fff;
 }
 
 .nav_portrait {
+  height: 58px;
   width: 100vw;
   max-width: 100%;
   position: fixed;
   display: flex;
   flex-grow: 1;
   justify-content: center;
+  align-items: center;
   top: 0;
   z-index: 99;
-  background-color: white;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05), 0px 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: #295C28;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15), 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .nav_landscape {
@@ -109,8 +111,8 @@ nav a.router-link-active {
   align-items: center;
   left: 0;
   z-index: 99;
-  background-color: white;
-  box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.05), 4px 0px 20px rgba(0, 0, 0, 0.1);
+  background-color: #295C28;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15), 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .nav_landscape > a {
