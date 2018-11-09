@@ -69,7 +69,7 @@ ul {
 nav a {
   font-size: 1.6em;
   text-decoration: none;
-  color: #d6d6d6;
+  color: #c5c5c5;
   transition: color 0.2s ease;
   margin: 4px 8px;
   padding: 6px;
