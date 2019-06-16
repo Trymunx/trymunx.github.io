@@ -1,35 +1,61 @@
 <template>
   <div class="page-container">
     <div class="about">
-      <div class="background-image">
-        <img src="@/assets/Alex-Line.png" class="profile-picture">
-        <div class="about-card">
-          <img src="@/assets/Alex-Line.png" class="card-profile-picture">
-          <h2>Alexander Houseago</h2>
-          <p>Hobbyist web developer and Linux enthusiast.</p>
-          <div class="social-links">
-            <a href="https://twitter.com/trymunx" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://github.com/trymunx" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="mailto:trymunx@gmail.com"><i class="fas fa-envelope"></i></a>
+      <img src="@/assets/Alex-Line.png" class="profile-picture">
+          <h2 class="my-name">Alexander Houseago</h2>
+          <div class="profile-divider"></div>
+          <div class="about-me-description">
+            <p class="about-me-para">I am a hobbyist web developer, mostly working on games
+            written in Javascript or Typescript. I have also been working
+            on some other non-game related projects, like a
+            <a href="https://trymunx.com/metric-clock" target="_blank">metric clock</a> and a
+            <a href="https://twodo-app.github.io/twodo-app/#/" target="_blank">simple todo app</a>.</p>
+            <p class="about-me-para">I love messing around with configuration and dotfiles
+            when I'm supposed to be doing anything more productive, and I have a bit of a soft spot
+            for Chrome OS.</p>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="about-me">
-      <h2>Alexander Houseago</h2>
-      <p>Hobbyist web developer and Linux enthusiast.</p>
-      <div class="social-links">
-        <a href="https://twitter.com/trymunx" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://github.com/trymunx" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="mailto:trymunx@gmail.com"><i class="fas fa-envelope"></i></a>
-      </div>
+          <div class="social-links" @mouseenter="cancelTimeout()" @mouseleave="clearLinkDescription()">
+            <a href="https://twitter.com/trymunx" target="_blank" @mouseenter="linkHover('twitter')"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/trymunx" target="_blank" @mouseenter="linkHover('github')"><i class="fab fa-github"></i></a>
+            <a href="mailto:trymunx@gmail.com" @mouseenter="linkHover('email')"><i class="fas fa-envelope"></i></a>
+            <div class="link-description">{{linkDescription}}</div>
+          </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "about"
+  data() {
+    return {
+      linkDescription: "",
+      linkDescriptionTimeout: null,
+    }
+  },
+  methods: {
+    cancelTimeout() {
+      clearTimeout(this.linkDescriptionTimeout);
+    },
+    clearLinkDescription() {
+      this.linkDescriptionTimeout = setTimeout(() => this.linkDescription = "", 3000);
+    },
+    linkHover(linkString) {
+      switch (linkString) {
+        case "twitter":
+          this.linkDescription = "Twitter";
+          break;
+        case "github":
+          this.linkDescription = "GitHub";
+          break;
+        case "email":
+          this.linkDescription = "trymunx@gmail.com";
+          break;
+        default:
+          console.error("hmm what did you hover?");
+      }
+    }
+  },
+  name: "about",
 };
 </script>
 
@@ -44,42 +70,53 @@ export default {
   z-index: -2;
 }
 
-.page-container,
-.about {
-  height: 100vh;
-  max-height: 100%;
+.page-container {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  justify-content: center;
+  background-color: #eee;
 }
 
-.about-me {
-  position: absolute;
-  bottom: 0;
+.about {
+  max-width: 500px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 30%;
-  min-height: 160px;
-  width: 100vw;
-  max-width: 100%;
-  background: #fff;
-  box-shadow: 0 -4px 18px 0 #0000004d;
-  z-index: 1;
-}
-
-.about-me > * {
-  padding: 8px 2px;
-}
-
-.about-me > p {
-  padding: 8px 18px;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 -2px 8px 0 #0000004d;
 }
 
 .profile-picture {
-  width: 50%;
-  max-width: 400px;
+  width: 40%;
+  max-width: 200px;
+  margin: 45px;
+  border-radius: 50%;
+  border: 1px #333 solid;
+}
+
+.my-name {
+  font-size: 1.6em;
+}
+
+.profile-divider {
+  background-color: #b5b5b5;
+  height: 1px;
+  width: 75%;
+  margin: 10px 0px;
+}
+
+.about-me-description {
+}
+
+.about-me-para {
+  padding: 6px 28px;
+  text-align: left;
+  line-height: 1.5em;
 }
 
 .social-links {
-  margin-top: 10px;
+  padding: 20px;
 }
 
 .social-links > a {
@@ -93,84 +130,10 @@ export default {
   color: #4c7553;
 }
 
-.about-card {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 500px;
-  background: #fff;
-  border-radius: 2px;
-  box-shadow: 0 4px 8px 0 #0000000a, 0 6px 20px 0 #00000032;
-  padding: 20px;
-}
-
-.about-card > h1,
-p {
-  padding: 20px;
-}
-
-.card-profile-picture {
-  width: 240px;
-  margin: 30px;
-}
-
-@media screen and (orientation: landscape) {
-  .background-image {
-    width: 60vw;
-    max-width: 100%;
-    height: 100vh;
-    max-height: 100%;
-  }
-  .profile-picture {
-    height: 50%;
-    max-height: 400px;
-    width: auto;
-  }
-  .about-me {
-    right: 0;
-    width: 40%;
-    height: 100vh;
-    max-height: 100%;
-    box-shadow: none;
-  }
-}
-
-@media screen and (min-width: 650px) and (min-height: 650px) {
-  .about-card {
-    display: flex;
-  }
-  .page-container,
-  .background-image {
-    width: 100vw;
-    max-width: 100%;
-    height: 100vh;
-    max-height: 100%;
-  }
-  .profile-picture,
-  .about-me {
-    display: none;
-  }
-}
-
-@media screen and (max-height: 530px) and (orientation: landscape) {
-  .about {
-    top: 0px;
-    height: 100vh;
-    max-height: 100%;
-    width: 100vw;
-    max-width: 100%;
-  }
-
-  .about-me {
-    right: 0px;
-    height: 100vh;
-    max-height: 100%;
-    width: 40%;
-  }
-
-  .background-image {
-    height: 100vh;
-  }
+.link-description {
+  color: #7a7a7a;
+  margin: 10px;
+  height: 20px;
+  width: 150px;
 }
 </style>
