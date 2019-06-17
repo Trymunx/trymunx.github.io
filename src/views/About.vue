@@ -18,7 +18,7 @@
             <a href="https://twitter.com/trymunx" target="_blank" @mouseenter="linkHover('twitter')"><i class="fab fa-twitter"></i></a>
             <a href="https://github.com/trymunx" target="_blank" @mouseenter="linkHover('github')"><i class="fab fa-github"></i></a>
             <a href="mailto:trymunx@gmail.com" @mouseenter="linkHover('email')"><i class="fas fa-envelope"></i></a>
-            <div class="link-description">{{linkDescription}}</div>
+            <div class="link-description" ref="linkDescription">{{linkDescription}}</div>
           </div>
     </div>
   </div>
@@ -37,9 +37,12 @@ export default {
       clearTimeout(this.linkDescriptionTimeout);
     },
     clearLinkDescription() {
-      this.linkDescriptionTimeout = setTimeout(() => this.linkDescription = "", 3000);
+      this.linkDescriptionTimeout = setTimeout(() => {
+        this.$refs.linkDescription.classList.add('fadeOut');
+      }, 2000);
     },
     linkHover(linkString) {
+      this.$refs.linkDescription.classList.remove('fadeOut');
       switch (linkString) {
         case "twitter":
           this.linkDescription = "Twitter";
@@ -60,35 +63,35 @@ export default {
 </script>
 
 <style>
-.background-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: url("/forest1.jpg") no-repeat center fixed;
-  background-size: cover;
-  height: 70%;
-  z-index: -2;
+.fadeOut {
+  opacity: 0;
+  transition: opacity 1s;
 }
-
+.transparent {
+}
 .page-container {
   display: flex;
   width: 100%;
   min-height: 100%;
   justify-content: center;
-  background-color: #eee;
+  background-color: #ededed;
+  background-image: url("/forest.svg");
+  background-size: cover;
+  background-blend-mode: multiply;
 }
 
 .about {
-  max-width: 500px;
+  max-width: 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: white;
-  box-shadow: 0 -2px 8px 0 #0000004d;
 }
 
 .profile-picture {
-  width: 40%;
+  width: 160px;
+  height: 160px;
   max-width: 200px;
   margin: 45px;
   border-radius: 50%;
@@ -135,5 +138,16 @@ export default {
   margin: 10px;
   height: 20px;
   width: 150px;
+}
+
+@media only screen and (min-width: 500px) {
+  .page-container {
+    align-items: center;
+  }
+
+  .about {
+    border-radius: 5px;
+    padding: 0 30px;
+  }
 }
 </style>

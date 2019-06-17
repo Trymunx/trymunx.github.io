@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <nav :class="`nav_${orientation}`">
+      <div class="title" :class="`title_${orientation}`"><span>Trymunx</span><span>|</span></div>
       <router-link to="/about">About</router-link>
       <router-link to="/projects">Projects</router-link>
       <router-link to="/blog">Blog</router-link>
@@ -66,22 +67,33 @@ ul {
   top: 58px;
 }
 
+.title {
+  font-size: 24px;
+  padding: 6px 10px 6px 30px;
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+}
+.title_landscape {
+  display: none;
+}
+
 nav a {
-  font-size: 1.6em;
+  font-size: 22px;
   text-decoration: none;
-  color: #c5c5c5;
+  color: #787878;
   transition: color 0.2s ease;
   margin: 4px 8px;
   padding: 6px;
 }
 
 nav a.router-link-active {
-  color: #eee;
-  font-size: 1.7em;
+  color: #135a0e;
+  font-size: 24px;
 }
 
 nav a:hover {
-  color: #fff;
+  color: #067d0f;
 }
 
 .nav_portrait {
@@ -91,11 +103,11 @@ nav a:hover {
   position: fixed;
   display: flex;
   flex-grow: 1;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   top: 0;
   z-index: 99;
-  background-color: #295C28;
+  background-color: #fff;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15), 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -111,11 +123,21 @@ nav a:hover {
   align-items: center;
   left: 0;
   z-index: 99;
-  background-color: #295C28;
+  background-color: #fff;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15), 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .nav_landscape > a {
   transform: rotate(270deg);
+}
+
+@media only screen and (max-width: 450px) {
+  .title {
+    display: none;
+  }
+
+  .nav_portrait {
+    justify-content: space-around;
+  }
 }
 </style>
