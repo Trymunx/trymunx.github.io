@@ -1,23 +1,129 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu|Roboto" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <style>
+      .page-container {
+        display: flex;
+        width: 100%;
+        min-height: 100%;
+        justify-content: center;
+        background-color: #ededed;
+        background-image: url("/forest.svg");
+        background-size: cover;
+        background-blend-mode: multiply;
+      }
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-    crossorigin="anonymous">
-  <title>Alexander Houseago</title>
-</head>
+      .profile-picture {
+        width: 160px;
+        height: 160px;
+        max-width: 200px;
+        margin: 45px;
+        border-radius: 50%;
+        border: 1px #333 solid;
+      }
+      .about {
+        max-width: 450px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+      }
+      .my-name {
+        font-size: 1.6em;
+      }
 
-<body>
-  <noscript>
-    <strong>Sorry but this site doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-  </noscript>
-  <div id="app"></div>
-  <!-- built files will be auto injected -->
-</body>
+      .profile-divider {
+        background-color: #b5b5b5;
+        height: 1px;
+        width: 75%;
+        margin: 10px 0px;
+      }
 
+      .about-me-para {
+        padding: 6px 28px;
+        text-align: left;
+        line-height: 1.5em;
+      }
+
+      .social-links {
+        padding: 20px;
+      }
+
+      .social-links > a {
+        font-size: 2em;
+        padding: 2px 10px;
+        color: #2a3a2d;
+        transition: color 0.35s ease;
+      }
+
+      .social-links > a:hover {
+        color: #4c7553;
+      }
+
+      .link-description {
+        color: #7a7a7a;
+        margin: 10px;
+        height: 20px;
+        width: 150px;
+      }
+    </style>
+    <title>Alexander Houseago</title>
+  </head>
+
+  <body>
+    <noscript>
+      <div class="page-container">
+        <div class="about">
+          <img src="/Alex-Line.png" class="profile-picture" />
+          <h2 class="my-name">Alexander Houseago</h2>
+          <div class="profile-divider"></div>
+          <div class="about-me-description">
+            <p class="about-me-para">
+              I am a hobbyist web developer, mostly working on games written in Javascript or
+              Typescript. I have also been working on some other non-game related projects, like a
+              <a href="https://trymunx.com/metric-clock" rel="noopener noreferrer" target="_blank">
+                metric clock</a
+              >
+              and a
+              <a
+                href="https://twodo-app.github.io/twodo-app/#/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                simple todo app</a
+              >.
+            </p>
+            <p class="about-me-para">
+              I love messing around with configuration and dotfiles when I'm supposed to be doing
+              anything more productive, and I have a bit of a soft spot for Chrome OS.
+            </p>
+            <p class="about-me-para">
+              You're currently viewing this website with Javascript turned off. I built it using
+              VueJS so there are a few bits missing without Javascript such as which projects I'm
+              working on. but feel free to visit my GitHub page to view these.
+            </p>
+          </div>
+          <div class="social-links">
+            <a href="https://twitter.com/trymunx" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/trymunx" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="mailto:trymunx@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>

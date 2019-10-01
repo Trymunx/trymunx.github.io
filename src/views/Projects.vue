@@ -1,93 +1,169 @@
 <template>
-  <div class="page-background" @click="setActive('')">
+  <div class="page-background">
     <div class="projects">
-      <project-card 
-        v-for="(project, i) in projects" 
-        :key="i" 
-        :focused="active === i"
-        @click.native.stop>
-        <img :src="project.img" slot="card-image" class="card-image" @click.stop="toggleActiveCard(project.title)">
-        <!-- <img :src="project.img" slot="card-image" class="card-image" @click.stop="active === -1 ? setActive(project.title) : setActive('')"> -->
-        <h1 slot="project-title">{{ project.title }}</h1>
-        <a slot="link-button" :href="project.link.url" target="_blank">{{ project.link.title }}</a>
-        <a slot="source-button" :href="project.source" target="_blank"><i class="fab fa-github"></i></a>
-        <p slot="description" @click.stop="setActive(project.title)">{{ project.description }}</p>
-        <div slot="writeup"
-          v-for="(element, i) in project.post"
-          :key="i"
-          v-html="`<${element.element}>${element.content}</${element.element}>`"></div>
-      </project-card>
+      <div>
+        <div class="project-container">
+          <span class="project-title">
+            <h2>Spindelspel</h2>
+            <safe-anchor
+              :href="'https://trymunx.github.io/Spindelspel'"
+              class="button play-button"
+            >Play</safe-anchor>
+            <safe-anchor
+              :href="'https://github.com/trymunx/Spindelspel'"
+              class="button source-button"
+            >
+              <i class="fab fa-github"></i> Source
+            </safe-anchor>
+          </span>
+          <p>
+            A top down swarm game created in p5js in a weekend. You control a character with
+            WASD keys, and draw and fire arrows at spiders as they converge on you.
+          </p>
+        </div>
+        <div class="project-container">
+          <span class="project-title">
+            <h2>Dragon Slayer</h2>
+            <safe-anchor
+              :href="'https://trymunx.github.io/dragon-slayer'"
+              class="button play-button"
+            >Play</safe-anchor>
+            <safe-anchor
+              :href="'https://github.com/trymunx/dragon-slayer'"
+              class="button source-button"
+            >
+              <i class="fab fa-github"></i> Source
+            </safe-anchor>
+          </span>
+          <p>
+            A text based RPG, which is still very much a work in progress. The main game is a top
+            down map on which each creature is depicted by an ASCII character.
+          </p>
+        </div>
+        <div class="project-container">
+          <span class="project-title">
+            <h2>Metric Clock</h2>
+            <safe-anchor
+              :href="'https://trymunx.github.io/metric-clock'"
+              class="button view-button"
+            >View</safe-anchor>
+            <safe-anchor
+              :href="'https://github.com/trymunx/metric-clock'"
+              class="button source-button"
+            >
+              <i class="fab fa-github"></i> Source
+            </safe-anchor>
+          </span>
+          <p>
+            A page showing the current time in UTC and the metric equivalent. Metric time splits the
+            day into 10 hours, each with 100 minutes of 100 seconds.
+          </p>
+        </div>
+        <div class="project-container">
+          <span class="project-title">
+            <h2>Twodo App</h2>
+            <safe-anchor
+              :href="'https://twodo-app.github.io/twodo-app/#/'"
+              class="button view-button"
+            >View</safe-anchor>
+            <safe-anchor :href="'https://github.com/twodo-app/'" class="button source-button">
+              <i class="fab fa-github"></i> Source
+            </safe-anchor>
+          </span>
+          <p>
+            A simple to-do list app written in VueJS with a node backend hosted on Heroku. You can
+            add and remove todos, and save your user ID as a cookie to return to them without
+            needing to sign in (although all todos are cleared after a short interval).
+            This project was made together with
+            <safe-anchor :href="'https://pd-andy.github.io/'" class="name-tag-link">@pd-andy</safe-anchor>.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import ProjectCard from "@/components/ProjectCard";
-import ProjectsJSON from "@/projects/index.json";
+import SafeAnchor from "@/components/SafeAnchor";
 
 export default {
-  data() {
-    return {
-      projects: ProjectsJSON,
-      active: -1
-    };
-  },
   components: {
-    ProjectCard
-  },
-  methods: {
-    toggleActiveCard(title) {
-      // find if the title clicked on is the current title. If so, setActive(""), otherwise setActive(index)
-      let isFullscreen = this.$route.params.post
-        ? title.toLowerCase() === this.$route.params.post.toLowerCase()
-        : false;
-      // let indexOfTitle = this.projects.findIndex(project => project.title.toLowerCase() === this.$route.params.post.toLowerCase());
-      if (isFullscreen) {
-        this.setActive("");
-      } else {
-        this.setActive(title);
-      }
-    },
-    setActive(title, firstVisit = false) {
-      if (!firstVisit) this.$router.push({ path: `/projects/${title || ""}` });
-      this.active = this.$route.params.post
-        ? this.projects.findIndex(e => {
-            return (
-              e.title.toLowerCase() === this.$route.params.post.toLowerCase()
-            );
-          })
-        : -1;
-    }
-  },
-  created() {
-    this.setActive(this.$route.params.title, true);
-    window.addEventListener("keydown", e => {
-      if (this.active !== -1 && e.keyCode === 27) {
-        this.setActive('');
-      }
-    });
+    SafeAnchor
   }
 };
 </script>
 
-<style>
+<style scoped>
+.button {
+  flex: 0 0 auto;
+  font-size: 1.1em;
+  padding: 6px 15px;
+  text-decoration: none;
+}
+
+.play-button {
+  background-color: #42693f;
+  color: white;
+}
+.play-button:hover {
+  background-color: #245c1d;
+}
+
+.source-button {
+  background-color: #d3d3d3;
+  color: #272727;
+}
+.source-button:hover {
+  background-color: #c0c0c0;
+}
+
+.view-button {
+  background-color: #385cc7;
+  color: white;
+}
+.view-button:hover {
+  background-color: #4a6dd8;
+}
+
 .projects {
+  flex: 0 1 auto;
+  font-family: "Roboto", sans-serif;
+  margin: 20px;
+  max-width: 500px;
+  text-align: left;
+}
+
+.project-container {
+  margin-bottom: 20px;
+}
+
+.project-title {
+  align-items: center;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 20px 0px;
-  width: 100vw;
-  max-width: 100%;
+  flex-direction: row;
+  padding: 10px 0 18px;
+}
+
+.project-title h2 {
+  color: #494949;
+  font-size: 24px;
+  margin-right: auto;
 }
 
 .page-background {
-  position: absolute;
   background: linear-gradient(165deg, #fefefe 60%, #d3d3d3);
-  z-index: -1;
-  width: 100vw;
+  display: flex;
+  justify-content: center;
   max-width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 58px);
   overflow-x: hidden;
+  width: 100vw;
+}
+
+.name-tag-link {
+  color: #385cc7;
+  font-size: 1.1rem;
+  font-weight: bold;
+  white-space: nowrap;
 }
 </style>
