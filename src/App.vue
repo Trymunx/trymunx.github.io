@@ -1,10 +1,13 @@
 <template>
   <div id="app">
     <nav :class="`nav_${orientation}`">
-      <div class="title" :class="`title_${orientation}`"><span>Trymunx</span><span>|</span></div>
+      <div class="title" :class="`title_${orientation}`">
+        <span>Trymunx</span>
+        <span>|</span>
+      </div>
       <router-link to="/about">About</router-link>
       <router-link to="/projects">Projects</router-link>
-      <router-link to="/blog">Blog</router-link>
+      <!-- <router-link to="/blog">Blog</router-link> -->
     </nav>
     <div :class="`app-content_${orientation}`">
       <router-view/>
@@ -17,20 +20,24 @@ export default {
   data() {
     return {
       orientation: ""
-    }
+    };
   },
   methods: {
     calculateOrientation() {
-      return window.matchMedia("(orientation: landscape)").matches && (window.innerHeight <= 530)
+      return window.matchMedia("(orientation: landscape)").matches &&
+        window.innerHeight <= 530
         ? "landscape"
-        : "portrait"
+        : "portrait";
     }
   },
   mounted() {
     this.orientation = this.calculateOrientation();
-    window.addEventListener("resize", () => this.orientation = this.calculateOrientation());
+    window.addEventListener(
+      "resize",
+      () => (this.orientation = this.calculateOrientation())
+    );
   }
-}
+};
 </script>
 
 <style>
@@ -89,7 +96,6 @@ nav a {
 
 nav a.router-link-active {
   color: #135a0e;
-  font-size: 24px;
 }
 
 nav a:hover {
