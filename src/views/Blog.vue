@@ -13,13 +13,20 @@
     </div>
     <div class="blog-main">
       Blog post
+      <blog-post>
+        <template v-slot:title><h1>The blog title</h1></template>
+        <template v-slot:content><p>The blog content</p></template>
+      </blog-post>
     </div>
   </div>
 </template>
 
 <script>
+import BlogPost from "@/components/BlogPost.vue";
+
 export default {
-  name: "blog"
+  name: "blog",
+  components: {BlogPost},
 };
 </script>
 
